@@ -16,7 +16,6 @@ Main_Rocket = pygame.image.load(os.path.join("Images", "Main_Rocket.png"))
 
 # Lasers
 Rocket_Bullet = pygame.image.load(os.path.join("Images", "Rocket_Bullet.png"))
-Big_Blast = pygame.image.load(os.path.join("Images", "Big_Blast.png"))
 Small_Spaceship_Laser = pygame.image.load(os.path.join("Images", "Laser_Beam.png"))
 
 # Background
@@ -35,26 +34,6 @@ class Laser:
 
    def move(self, vel):
        self.y += vel
-
-   def off_screen(self, height):
-       return not(height >= self.y >= 0)
-
-   def collision(self, obj):
-       return collide(self, obj)
-
-
-class Blast:
-   def __init__(self, x, y, img):
-       self.x = x
-       self.y = y
-       self.img = img
-       self.mask = pygame.mask.from_surface(self.img)
-
-   def draw(self, window):
-       window.blit(self.img, (self.x, self.y))
-
-   def move(self, big_vel):
-       self.y += big_vel
 
    def off_screen(self, height):
        return not(height >= self.y >= 0)
@@ -180,7 +159,6 @@ def main():
 
    player_vel = 5
    laser_vel = 5
-   blast_vel = 3
 
    player = Player(300, 650)
 
